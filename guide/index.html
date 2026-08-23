@@ -21,7 +21,9 @@
     --teal-deep:#154E55;
     --marigold:#E2A63B;
     --marigold-deep:#B27E1F;
+    --marigold-text:#805312;
     --coral:#D45B4E;
+    --coral-text:#A83C30;
     --radius:2px;
     --max:1080px;
   }
@@ -42,10 +44,23 @@
   }
 
   a{color:var(--teal-deep);}
-  a:focus-visible, button:focus-visible, .route-card:focus-visible{
-    outline:3px solid var(--marigold);
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
+    outline:3px solid var(--ink);
     outline-offset:2px;
   }
+  .skip-link{
+    position:absolute;
+    left:12px; top:-60px;
+    background:var(--ink);
+    color:#fff;
+    padding:10px 16px;
+    z-index:100;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    text-decoration:none;
+    transition:top 0.15s;
+  }
+  .skip-link:focus{top:12px;}
 
   .wrap{max-width:var(--max); margin:0 auto; padding:0 24px;}
 
@@ -81,8 +96,8 @@
     border:1px solid currentColor;
   }
   .tag.budget{color:var(--teal-deep); background:#EAF3F2;}
-  .tag.mid{color:var(--marigold-deep); background:#FBF1DF;}
-  .tag.splurge{color:var(--coral); background:#FBEAE8;}
+  .tag.mid{color:var(--marigold-text); background:#FBF1DF;}
+  .tag.splurge{color:var(--coral-text); background:#FBEAE8;}
   .tag.tbd{color:#6B6580; background:#EDEAF3; border-style:dashed;}
   .tag.lgbtq{color:var(--violet-deep); background:#EFE9F7;}
 
@@ -322,7 +337,6 @@
     font-family:'IBM Plex Mono', monospace;
     font-size:12px; color:var(--teal-deep); font-weight:600;
   }
-  }
   .eat-list{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
@@ -342,7 +356,7 @@
   .eat-item .price{
     font-family:'IBM Plex Mono', monospace;
     font-size:12px;
-    color:var(--marigold-deep);
+    color:var(--marigold-text);
     white-space:nowrap;
   }
 
@@ -464,7 +478,7 @@
     font-weight:600;
     letter-spacing:0.06em;
     text-transform:uppercase;
-    color:var(--marigold-deep);
+    color:var(--marigold-text);
     display:block;
     margin-bottom:6px;
   }
@@ -527,6 +541,33 @@
   .legend-ferry{background:repeating-linear-gradient(90deg, var(--teal) 0 3px, transparent 3px 6px);}
   .legend-bridge{background:#8A8A8A; height:2px;}
 
+  .city-jump{
+    margin-top:20px;
+    padding-top:18px;
+    border-top:1px solid var(--fog-line);
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:8px 10px;
+  }
+  .city-jump-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--teal-deep);
+    font-weight:600;
+    margin-right:4px;
+  }
+  .city-jump a{
+    font-size:0.85rem;
+    color:var(--ink);
+    background:var(--fog);
+    border:1px solid var(--fog-line);
+    padding:5px 12px;
+    border-radius:999px;
+    text-decoration:none;
+  }
+  .city-jump a:hover{background:var(--fog-line);}
+
   .map-pin{
     display:flex; align-items:center; justify-content:center;
     border-radius:50%;
@@ -564,7 +605,7 @@
     font-family:'IBM Plex Mono', monospace;
     font-size:11px;
     font-weight:600;
-    color:var(--marigold-deep);
+    color:var(--marigold-text);
     margin-left:4px;
   }
 
@@ -587,6 +628,8 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <div class="masthead">
   <div class="masthead-inner">
     <div class="brand"><strong>The Whistle Margin</strong> · Bay Area Field Guide</div>
@@ -606,6 +649,8 @@
   </div>
 </header>
 
+<main id="main-content">
+
 <!-- ORIENTATION MAP -->
 <section id="orientation-map-section">
   <div class="wrap">
@@ -613,16 +658,33 @@
       <div>
         <div class="eyebrow">Big picture</div>
         <h2>Where everything sits, at a glance</h2>
-        <p class="section-desc">Every city in this guide, plotted against Chase Center and Moscone Center on a real map. Click any dot to jump straight to that city's guide below. Bridges are marked for anyone driving or taking rideshare.</p>
+        <p class="section-desc">Every city in this guide, plotted against Chase Center and Moscone Center on a real map. Click any dot to jump straight to that city's guide below, or use the text list if you're not using a mouse. Bridges are marked for anyone driving or taking rideshare.</p>
       </div>
     </div>
-    <div id="orientation-map"></div>
+    <div id="orientation-map" role="img" aria-label="Map of the Bay Area showing Chase Center, Moscone Center, and all 14 guide cities. A text list of the same cities follows below for keyboard and screen reader use."></div>
     <div class="map-legend">
       <span><span class="legend-swatch legend-bart"></span> BART corridor</span>
       <span><span class="legend-swatch legend-caltrain"></span> Caltrain corridor</span>
       <span><span class="legend-swatch legend-ferry"></span> Direct ferry (Oakland only)</span>
       <span><span class="legend-swatch legend-bridge"></span> Bridge (driving/rideshare)</span>
     </div>
+    <nav class="city-jump" aria-label="Jump to a city guide">
+      <span class="city-jump-label">Jump straight to:</span>
+      <a href="#berkeley">Berkeley</a>
+      <a href="#oakland">Oakland</a>
+      <a href="#san-leandro">San Leandro</a>
+      <a href="#hayward">Hayward</a>
+      <a href="#south-san-francisco">South San Francisco</a>
+      <a href="#millbrae">Millbrae</a>
+      <a href="#burlingame">Burlingame</a>
+      <a href="#san-mateo">San Mateo</a>
+      <a href="#redwood-city">Redwood City</a>
+      <a href="#palo-alto">Palo Alto</a>
+      <a href="#mountain-view">Mountain View</a>
+      <a href="#santa-clara">Santa Clara</a>
+      <a href="#san-jose">San José</a>
+      <a href="#milpitas">Milpitas</a>
+    </nav>
   </div>
 </section>
 
@@ -639,7 +701,7 @@
     </div>
 
     <div class="route-grid">
-      <div class="route-card" style="--line-color:var(--teal)" tabindex="0">
+      <div class="route-card" style="--line-color:var(--teal)">
         <div class="roundel">EB</div>
         <span class="route-mode">Ferry</span>
         <h3>East Bay (Oakland / Alameda)</h3>
@@ -647,7 +709,7 @@
         <div class="route-time">~25–35 min crossing · book via SF Bay Ferry app</div>
       </div>
 
-      <div class="route-card" style="--line-color:var(--violet)" tabindex="0">
+      <div class="route-card" style="--line-color:var(--violet)">
         <div class="roundel">SF</div>
         <span class="route-mode">Muni Metro</span>
         <h3>Staying in San Francisco</h3>
@@ -655,7 +717,7 @@
         <div class="route-time">~20 min from Chinatown/Union Square</div>
       </div>
 
-      <div class="route-card" style="--line-color:var(--marigold-deep)" tabindex="0">
+      <div class="route-card" style="--line-color:var(--marigold-text)">
         <div class="roundel">PS</div>
         <span class="route-mode">BART + Muni</span>
         <h3>Peninsula / South Bay</h3>
@@ -663,7 +725,7 @@
         <div class="route-time">BART runs until ~midnight — plan your last train</div>
       </div>
 
-      <div class="route-card" style="--line-color:var(--coral)" tabindex="0">
+      <div class="route-card" style="--line-color:var(--coral-text)">
         <div class="roundel">NB</div>
         <span class="route-mode">Ferry</span>
         <h3>North Bay / Marin</h3>
@@ -671,7 +733,7 @@
         <div class="route-time">Larkspur → Ferry Building ~30 min</div>
       </div>
 
-      <div class="route-card" style="--line-color:var(--ink)" tabindex="0">
+      <div class="route-card" style="--line-color:var(--ink)">
         <div class="roundel">FLY</div>
         <span class="route-mode">Air + BART</span>
         <h3>Flying In</h3>
@@ -698,10 +760,10 @@
       <table>
         <thead>
           <tr>
-            <th>Mode</th>
-            <th>Route</th>
-            <th>Nearest stop to Chase Center</th>
-            <th>Notes</th>
+            <th scope="col">Mode</th>
+            <th scope="col">Route</th>
+            <th scope="col">Nearest stop to Chase Center</th>
+            <th scope="col">Notes</th>
           </tr>
         </thead>
         <tbody>
@@ -2095,6 +2157,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="wrap">
