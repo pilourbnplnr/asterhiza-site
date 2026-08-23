@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@400;600;700;800&family=Big+Shoulders+Text:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 <style>
   :root{
     --ink:#171334;
@@ -85,6 +86,7 @@
   .tag.tbd{color:#6B6580; background:#EDEAF3; border-style:dashed;}
   .tag.lgbtq{color:var(--violet-deep); background:#EFE9F7;}
 
+  /* ---------- HEADER / MASTHEAD ---------- */
   .masthead{
     background:var(--ink);
     color:var(--paper);
@@ -112,6 +114,7 @@
     color:#9D93B8;
   }
 
+  /* ---------- HERO ---------- */
   .hero{
     background:
       radial-gradient(ellipse at 15% 0%, rgba(226,166,59,0.16), transparent 55%),
@@ -164,6 +167,7 @@
     white-space:nowrap;
   }
 
+  /* ---------- SECTION SHELL ---------- */
   section{padding:56px 0;}
   section + section{border-top:1px solid var(--fog-line);}
   .section-head{
@@ -191,6 +195,7 @@
     align-self:flex-start;
   }
 
+  /* ---------- ROUTE FINDER (signature element) ---------- */
   .route-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
@@ -246,6 +251,7 @@
     margin-top:12px;
   }
 
+  /* ---------- SCHEDULE BOARD (transit table) ---------- */
   .board{
     background:var(--ink);
     color:var(--paper);
@@ -280,6 +286,7 @@
   }
   .board .muted{color:#9D93B8;}
 
+  /* ---------- STAY: neighborhood cards ---------- */
   .stay-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
@@ -301,6 +308,45 @@
   .stay-card ul{margin:0; padding-left:18px; font-size:0.88rem; color:#403A5C;}
   .stay-card li{margin-bottom:4px;}
 
+  /* ---------- EAT: menu board ---------- */
+  .eat-cluster{margin-bottom:34px;}
+  .eat-cluster:last-child{margin-bottom:0;}
+  .eat-cluster-head{
+    display:flex; align-items:baseline; gap:12px; margin-bottom:14px;
+    border-bottom:2px solid var(--ink); padding-bottom:8px;
+  }
+  .eat-cluster-head h3{
+    font-size:1.4rem; text-transform:none; letter-spacing:0; font-weight:700;
+  }
+  .eat-cluster-head .walk{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; color:var(--teal-deep); font-weight:600;
+  }
+  }
+  .eat-list{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:2px;
+    background:var(--fog-line);
+    border:1px solid var(--fog-line);
+  }
+  .eat-item{
+    background:var(--paper-panel);
+    padding:14px 16px;
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+  }
+  .eat-item .name{font-weight:600; font-size:0.95rem;}
+  .eat-item .desc{font-size:0.84rem; color:#5C5578; margin-top:3px;}
+  .eat-item .price{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--marigold-deep);
+    white-space:nowrap;
+  }
+
+  /* ---------- TIPS ---------- */
   .tips-panel{
     background:var(--violet-deep);
     color:#fff;
@@ -331,6 +377,7 @@
   }
   .tips-list strong{color:#fff;}
 
+  /* ---------- CITY DEEP-DIVE (new) ---------- */
   .city-guide{
     background:var(--paper-panel);
     border:1px solid var(--fog-line);
@@ -457,6 +504,71 @@
   .attraction-card .a-name{font-weight:700; font-size:0.95rem; margin-bottom:4px; display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
   .attraction-card p{font-size:0.85rem; color:#403A5C; margin:0;}
 
+  #orientation-map{
+    height:640px;
+    width:100%;
+    border:1px solid var(--fog-line);
+    background:var(--fog);
+  }
+  .leaflet-popup-content a{color:var(--teal-deep); font-weight:600;}
+  .map-legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px 28px;
+    margin-top:14px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:#403A5C;
+  }
+  .map-legend span{display:inline-flex; align-items:center; gap:8px;}
+  .legend-swatch{display:inline-block; width:22px; height:4px; border-radius:2px; flex-shrink:0;}
+  .legend-bart{background:var(--coral);}
+  .legend-caltrain{background:repeating-linear-gradient(90deg, var(--marigold) 0 6px, transparent 6px 10px);}
+  .legend-ferry{background:repeating-linear-gradient(90deg, var(--teal) 0 3px, transparent 3px 6px);}
+  .legend-bridge{background:#8A8A8A; height:2px;}
+
+  .map-pin{
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%;
+    font-weight:700;
+    cursor:pointer;
+  }
+  .map-pin-venue{
+    width:26px; height:26px;
+    background:var(--marigold);
+    color:var(--ink);
+    font-size:15px;
+    border:2px solid var(--ink);
+  }
+  .map-pin-bart{
+    width:14px; height:14px;
+    background:var(--coral);
+    border:2px solid #fff;
+    box-shadow:0 0 0 1px var(--coral);
+  }
+  .map-pin-caltrain{
+    width:14px; height:14px;
+    background:var(--marigold);
+    border:2px solid #fff;
+    box-shadow:0 0 0 1px var(--marigold);
+  }
+  .map-pin-bridge{
+    width:14px; height:14px;
+    background:#6B6B6B;
+    color:#fff;
+    font-size:10px;
+    border:1px solid #fff;
+  }
+
+  .price-tier{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    font-weight:600;
+    color:var(--marigold-deep);
+    margin-left:4px;
+  }
+
+  /* ---------- FOOTER ---------- */
   footer{
     background:var(--ink);
     color:#9D93B8;
@@ -494,6 +606,27 @@
   </div>
 </header>
 
+<!-- ORIENTATION MAP -->
+<section id="orientation-map-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Big picture</div>
+        <h2>Where everything sits, at a glance</h2>
+        <p class="section-desc">Every city in this guide, plotted against Chase Center and Moscone Center on a real map. Click any dot to jump straight to that city's guide below. Bridges are marked for anyone driving or taking rideshare.</p>
+      </div>
+    </div>
+    <div id="orientation-map"></div>
+    <div class="map-legend">
+      <span><span class="legend-swatch legend-bart"></span> BART corridor</span>
+      <span><span class="legend-swatch legend-caltrain"></span> Caltrain corridor</span>
+      <span><span class="legend-swatch legend-ferry"></span> Direct ferry (Oakland only)</span>
+      <span><span class="legend-swatch legend-bridge"></span> Bridge (driving/rideshare)</span>
+    </div>
+  </div>
+</section>
+
+<!-- ROUTE FINDER -->
 <section id="routes">
   <div class="wrap">
     <div class="section-head">
@@ -549,6 +682,7 @@
   </div>
 </section>
 
+<!-- GETTING AROUND SCHEDULE BOARD -->
 <section id="transit">
   <div class="wrap">
     <div class="section-head">
@@ -607,6 +741,7 @@
   </div>
 </section>
 
+<!-- WHERE TO STAY -->
 <section id="stay">
   <div class="wrap">
     <div class="section-head">
@@ -658,6 +793,7 @@
   </div>
 </section>
 
+<!-- EAST BAY DEEP DIVE -->
 <section id="eastbay">
   <div class="wrap">
     <div class="section-head">
@@ -733,6 +869,7 @@
   </div>
 </section>
 
+<!-- EAST BAY CITY GUIDES -->
 <section id="eastbay-guides">
   <div class="wrap">
     <div class="section-head">
@@ -744,7 +881,8 @@
       <span class="stop-index">ORDER: OAKLAND → BERKELEY → SAN LEANDRO → HAYWARD</span>
     </div>
 
-    <div class="city-guide">
+    <!-- OAKLAND -->
+    <div class="city-guide" id="oakland">
       <div class="city-guide-head">
         <div>
           <h3>Oakland</h3>
@@ -785,7 +923,7 @@
             <div class="n-cols">
               <div class="n-col">
                 <span class="n-col-label">Stay</span>
-                <ul><li><strong>Waterfront Hotel</strong> — on the marina, steps to the ferry dock</li><li><strong>Jack London Inn</strong> — budget, right off the square</li><li><strong>Oakland Marriott City Center</strong> — a short walk inland, near 12th St BART</li></ul>
+                <ul><li><strong>Waterfront Hotel</strong> <span class="price-tier">$$</span> — on the marina, steps to the ferry dock</li><li><strong>Jack London Inn</strong> <span class="price-tier">$</span> — budget, right off the square</li><li><strong>Oakland Marriott City Center</strong> <span class="price-tier">$$</span> — a short walk inland, near 12th St BART</li><li><strong>Residence Inn Oakland Downtown</strong> <span class="price-tier">$$</span> — suites with kitchens, near the square</li><li><strong>Best Western Plus Bayside Hotel</strong> <span class="price-tier">$</span> — waterfront, budget-friendly</li></ul>
               </div>
               <div class="n-col">
                 <span class="n-col-label">Parks</span>
@@ -808,7 +946,7 @@
             <div class="n-cols">
               <div class="n-col">
                 <span class="n-col-label">Stay</span>
-                <ul><li><strong>Kissel Uptown Oakland</strong> — boutique, walkable to everything</li><li><strong>Courtyard Oakland Downtown</strong> — reliable, near 19th St BART</li></ul>
+                <ul><li><strong>Kissel Uptown Oakland</strong> <span class="price-tier">$$$</span> — boutique, walkable to everything</li><li><strong>Courtyard Oakland Downtown</strong> <span class="price-tier">$$</span> — reliable, near 19th St BART</li><li><strong>AC Hotel Oakland Downtown</strong> <span class="price-tier">$$</span> — modern, near BART</li><li><strong>Hampton Inn Oakland Downtown-City Center</strong> <span class="price-tier">$$</span> — solid budget-to-mid pick</li><li><strong>Moxy Oakland Uptown</strong> <span class="price-tier">$$</span> — playful boutique, near Uptown nightlife</li></ul>
               </div>
               <div class="n-col">
                 <span class="n-col-label">Parks</span>
@@ -855,7 +993,8 @@
       </div>
     </div>
 
-    <div class="city-guide">
+    <!-- BERKELEY -->
+    <div class="city-guide" id="berkeley">
       <div class="city-guide-head">
         <div>
           <h3>Berkeley</h3>
@@ -958,7 +1097,8 @@
       </div>
     </div>
 
-    <div class="city-guide">
+    <!-- SAN LEANDRO -->
+    <div class="city-guide" id="san-leandro">
       <div class="city-guide-head">
         <div>
           <h3>San Leandro</h3>
@@ -1033,7 +1173,8 @@
       </div>
     </div>
 
-    <div class="city-guide">
+    <!-- HAYWARD -->
+    <div class="city-guide" id="hayward">
       <div class="city-guide-head">
         <div>
           <h3>Hayward</h3>
@@ -1111,6 +1252,7 @@
   </div>
 </section>
 
+<!-- PENINSULA CITY GUIDES -->
 <section id="peninsula-guides">
   <div class="wrap">
     <div class="section-head">
@@ -1122,7 +1264,8 @@
       <span class="stop-index">ORDER: SOUTH SF → MILLBRAE → SAN MATEO → BURLINGAME</span>
     </div>
 
-    <div class="city-guide">
+    <!-- SOUTH SAN FRANCISCO -->
+    <div class="city-guide" id="south-san-francisco">
       <div class="city-guide-head">
         <div>
           <h3>South San Francisco</h3>
@@ -1197,7 +1340,8 @@
       </div>
     </div>
 
-    <div class="city-guide">
+    <!-- MILLBRAE -->
+    <div class="city-guide" id="millbrae">
       <div class="city-guide-head">
         <div>
           <h3>Millbrae</h3>
@@ -1276,7 +1420,8 @@
       </div>
     </div>
 
-    <div class="city-guide">
+    <!-- SAN MATEO -->
+    <div class="city-guide" id="san-mateo">
       <div class="city-guide-head">
         <div>
           <h3>San Mateo</h3>
@@ -1351,7 +1496,8 @@
       </div>
     </div>
 
-    <div class="city-guide">
+    <!-- BURLINGAME -->
+    <div class="city-guide" id="burlingame">
       <div class="city-guide-head">
         <div>
           <h3>Burlingame</h3>
@@ -1429,6 +1575,8 @@
   </div>
 </section>
 
+
+<!-- SOUTH BAY CITY GUIDES -->
 <section id="southbay-guides">
   <div class="wrap">
     <div class="section-head">
@@ -1440,7 +1588,8 @@
       <span class="stop-index">ORDER: SAN JOSÉ → SANTA CLARA → MILPITAS → MOUNTAIN VIEW → PALO ALTO → REDWOOD CITY</span>
     </div>
 
-    <div class="city-guide">
+    <!-- SAN JOSE -->
+    <div class="city-guide" id="san-jose">
       <div class="city-guide-head">
         <div>
           <h3>San José</h3>
@@ -1547,7 +1696,8 @@
       </div>
     </div>
 
-    <div class="city-guide">
+    <!-- SANTA CLARA -->
+    <div class="city-guide" id="santa-clara">
       <div class="city-guide-head">
         <div>
           <h3>Santa Clara</h3>
@@ -1622,7 +1772,8 @@
       </div>
     </div>
 
-    <div class="city-guide">
+    <!-- MILPITAS -->
+    <div class="city-guide" id="milpitas">
       <div class="city-guide-head">
         <div>
           <h3>Milpitas</h3>
@@ -1697,7 +1848,8 @@
       </div>
     </div>
 
-    <div class="city-guide">
+    <!-- MOUNTAIN VIEW -->
+    <div class="city-guide" id="mountain-view">
       <div class="city-guide-head">
         <div>
           <h3>Mountain View</h3>
@@ -1772,7 +1924,8 @@
       </div>
     </div>
 
-    <div class="city-guide">
+    <!-- PALO ALTO -->
+    <div class="city-guide" id="palo-alto">
       <div class="city-guide-head">
         <div>
           <h3>Palo Alto</h3>
@@ -1847,7 +2000,8 @@
       </div>
     </div>
 
-    <div class="city-guide">
+    <!-- REDWOOD CITY -->
+    <div class="city-guide" id="redwood-city">
       <div class="city-guide-head">
         <div>
           <h3>Redwood City</h3>
@@ -1925,6 +2079,7 @@
   </div>
 </section>
 
+<!-- MONEY SAVING TIPS -->
 <section id="tips">
   <div class="wrap">
     <div class="tips-panel">
@@ -1951,6 +2106,96 @@
     </div>
   </div>
 </footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+(function(){
+  var mapEl = document.getElementById('orientation-map');
+  if(!mapEl || typeof L === 'undefined') return;
+
+  var map = L.map('orientation-map', {scrollWheelZoom:false});
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  var venues = [
+    {name:'Chase Center', lat:37.768009, lng:-122.387787, sub:'Game + Shooting Stars/3PT Contest'},
+    {name:'Moscone Center', lat:37.7842, lng:-122.4016, sub:'WNBA Live fan fest'}
+  ];
+  var bartCities = [
+    {name:'Berkeley', lat:37.8699, lng:-122.2680, id:'berkeley'},
+    {name:'Oakland', lat:37.803608, lng:-122.272006, id:'oakland'},
+    {name:'San Leandro', lat:37.7214, lng:-122.1614, id:'san-leandro'},
+    {name:'Hayward', lat:37.6693, lng:-122.0871, id:'hayward'},
+    {name:'Milpitas', lat:37.4102, lng:-121.8912, id:'milpitas'}
+  ];
+  var caltrainCities = [
+    {name:'South San Francisco', lat:37.6547, lng:-122.4077, id:'south-san-francisco'},
+    {name:'Millbrae', lat:37.5997, lng:-122.3866, id:'millbrae'},
+    {name:'Burlingame', lat:37.5779, lng:-122.3453, id:'burlingame'},
+    {name:'San Mateo', lat:37.5683, lng:-122.3255, id:'san-mateo'},
+    {name:'Redwood City', lat:37.4848, lng:-122.2314, id:'redwood-city'},
+    {name:'Palo Alto', lat:37.4432, lng:-122.1651, id:'palo-alto'},
+    {name:'Mountain View', lat:37.3944, lng:-122.0762, id:'mountain-view'},
+    {name:'Santa Clara', lat:37.3536, lng:-121.9358, id:'santa-clara'},
+    {name:'San José', lat:37.3297, lng:-121.9027, id:'san-jose'}
+  ];
+  var bridges = [
+    {name:'Bay Bridge (I-80) — SF to Oakland', lat:37.8175, lng:-122.3413},
+    {name:'San Mateo Bridge (Hwy 92) — San Mateo to Hayward', lat:37.601, lng:-122.202},
+    {name:'Dumbarton Bridge (Hwy 84) — Redwood City to Fremont', lat:37.5069, lng:-122.1169}
+  ];
+
+  var starIcon = L.divIcon({className:'', html:'<div class="map-pin map-pin-venue">&#9733;</div>', iconSize:[26,26], iconAnchor:[13,13]});
+  var bartIcon = L.divIcon({className:'', html:'<div class="map-pin map-pin-bart"></div>', iconSize:[14,14], iconAnchor:[7,7]});
+  var caltrainIcon = L.divIcon({className:'', html:'<div class="map-pin map-pin-caltrain"></div>', iconSize:[14,14], iconAnchor:[7,7]});
+  var bridgeIcon = L.divIcon({className:'', html:'<div class="map-pin map-pin-bridge">&#8942;</div>', iconSize:[14,14], iconAnchor:[7,7]});
+
+  var allPoints = [];
+
+  venues.forEach(function(v){
+    var m = L.marker([v.lat, v.lng], {icon:starIcon}).addTo(map);
+    m.bindPopup('<strong>'+v.name+'</strong><br>'+v.sub);
+    allPoints.push([v.lat, v.lng]);
+  });
+
+  bartCities.forEach(function(c){
+    var m = L.marker([c.lat, c.lng], {icon:bartIcon}).addTo(map);
+    m.bindPopup('<strong>'+c.name+'</strong><br><a href="#'+c.id+'">View '+c.name+' guide &darr;</a>');
+    allPoints.push([c.lat, c.lng]);
+  });
+
+  caltrainCities.forEach(function(c){
+    var m = L.marker([c.lat, c.lng], {icon:caltrainIcon}).addTo(map);
+    m.bindPopup('<strong>'+c.name+'</strong><br><a href="#'+c.id+'">View '+c.name+' guide &darr;</a>');
+    allPoints.push([c.lat, c.lng]);
+  });
+
+  bridges.forEach(function(b){
+    var m = L.marker([b.lat, b.lng], {icon:bridgeIcon}).addTo(map);
+    m.bindPopup('<strong>'+b.name+'</strong><br>Bridge crossing — useful for driving or rideshare');
+  });
+
+  L.polyline([
+    [37.8699,-122.2680],[37.803608,-122.272006],[37.7214,-122.1614],[37.6693,-122.0871],[37.4102,-121.8912]
+  ], {color:'#D45B4E', weight:4, opacity:0.85}).addTo(map);
+
+  L.polyline([
+    [37.803608,-122.272006],[37.7842,-122.4016],[37.5997,-122.3866]
+  ], {color:'#D45B4E', weight:4, opacity:0.85}).addTo(map);
+
+  L.polyline([
+    [37.7842,-122.4016],[37.6547,-122.4077],[37.5997,-122.3866],[37.5779,-122.3453],[37.5683,-122.3255],[37.4848,-122.2314],[37.4432,-122.1651],[37.3944,-122.0762],[37.3536,-121.9358],[37.3297,-121.9027]
+  ], {color:'#E2A63B', weight:3, opacity:0.85, dashArray:'8,6'}).addTo(map);
+
+  L.polyline([
+    [37.803608,-122.272006],[37.768009,-122.387787]
+  ], {color:'#1F6F78', weight:3, opacity:0.85, dashArray:'2,8'}).addTo(map);
+
+  map.fitBounds(allPoints, {padding:[30,30]});
+})();
+</script>
 
 </body>
 </html>
