@@ -434,7 +434,24 @@
     border:1px solid var(--fog-line);
     padding:14px 16px;
   }
-  .attraction-card.is-lgbtq{border-left:4px solid var(--violet);}
+  .attraction-card.is-lgbtq{
+    position:relative;
+    border-left:4px solid transparent;
+  }
+  .attraction-card.is-lgbtq::before{
+    content:"";
+    position:absolute;
+    left:0; top:0; bottom:0;
+    width:4px;
+    background:linear-gradient(
+      to bottom,
+      #5BCEFA 0%, #5BCEFA 20%,
+      #F5A9B8 20%, #F5A9B8 40%,
+      #FFFFFF 40%, #FFFFFF 60%,
+      #F5A9B8 60%, #F5A9B8 80%,
+      #5BCEFA 80%, #5BCEFA 100%
+    );
+  }
   .attraction-card .a-name{font-weight:700; font-size:0.95rem; margin-bottom:4px; display:flex; gap:8px; align-items:center; flex-wrap:wrap;}
   .attraction-card p{font-size:0.85rem; color:#403A5C; margin:0;}
 
