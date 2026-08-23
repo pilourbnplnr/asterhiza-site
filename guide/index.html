@@ -593,6 +593,12 @@
     border:2px solid #fff;
     box-shadow:0 0 0 1px var(--marigold);
   }
+  .map-pin-ferry{
+    width:14px; height:14px;
+    background:var(--teal);
+    border:2px solid #fff;
+    box-shadow:0 0 0 1px var(--teal);
+  }
   .map-pin-bridge{
     width:14px; height:14px;
     background:#6B6B6B;
@@ -661,17 +667,18 @@
         <p class="section-desc">Every city in this guide, plotted against Chase Center and Moscone Center on a real map. Click any dot to jump straight to that city's guide below, or use the text list if you're not using a mouse. Bridges are marked for anyone driving or taking rideshare.</p>
       </div>
     </div>
-    <div id="orientation-map" role="img" aria-label="Map of the Bay Area showing Chase Center, Moscone Center, and all 14 guide cities. A text list of the same cities follows below for keyboard and screen reader use."></div>
+    <div id="orientation-map" role="img" aria-label="Map of the Bay Area showing Chase Center, Moscone Center, and all 15 guide cities. A text list of the same cities follows below for keyboard and screen reader use."></div>
     <div class="map-legend">
       <span><span class="legend-swatch legend-bart"></span> BART corridor</span>
       <span><span class="legend-swatch legend-caltrain"></span> Caltrain corridor</span>
-      <span><span class="legend-swatch legend-ferry"></span> Direct ferry (Oakland only)</span>
+      <span><span class="legend-swatch legend-ferry"></span> Direct ferry (Oakland + Alameda only)</span>
       <span><span class="legend-swatch legend-bridge"></span> Bridge (driving/rideshare)</span>
     </div>
     <nav class="city-jump" aria-label="Jump to a city guide">
       <span class="city-jump-label">Jump straight to:</span>
       <a href="#berkeley">Berkeley</a>
       <a href="#oakland">Oakland</a>
+      <a href="#alameda">Alameda</a>
       <a href="#san-leandro">San Leandro</a>
       <a href="#hayward">Hayward</a>
       <a href="#south-san-francisco">South San Francisco</a>
@@ -940,7 +947,7 @@
         <h2>East Bay, block by block</h2>
         <p class="section-desc">The quick-reference cards above tell you the commute math. These go further — where to actually sleep, get coffee, and eat in each city, plus the transit specifics for reaching both Chase Center (the Game and Shooting Stars/3-Point Contest) and Moscone Center (WNBA Live, the league's official fan fest, confirmed for All-Star weekend).</p>
       </div>
-      <span class="stop-index">ORDER: OAKLAND → BERKELEY → SAN LEANDRO → HAYWARD</span>
+      <span class="stop-index">ORDER: OAKLAND → ALAMEDA → BERKELEY → SAN LEANDRO → HAYWARD</span>
     </div>
 
     <!-- OAKLAND -->
@@ -1045,9 +1052,105 @@
               <div class="a-name">Lakeshore LGBTQ Cultural District <span class="tag lgbtq">LGBTQ+</span></div>
               <p>Oakland's official queer cultural district around Lake Merritt's Grand Lake/Lakeshore corner — rainbow crosswalk, queer-owned shops, and the Oakland LGBTQ Community Center.</p>
             </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ALAMEDA -->
+    <div class="city-guide" id="alameda">
+      <div class="city-guide-head">
+        <div>
+          <h3>Alameda</h3>
+          <div class="city-sub">~20–30 min to SF · Ferry only · no BART on the island</div>
+        </div>
+        <span class="tag budget">Budget</span>
+      </div>
+      <div class="city-guide-body">
+
+        <div class="city-block">
+          <div class="city-subhead"><span class="eyebrow">Transit</span></div>
+          <div class="transit-list">
+            <div class="transit-item">
+              <span class="t-mode">Ferry → Chase Center</span>
+              <p>The same special "Oakland & Alameda" event route that serves Chase Center for Valkyries games stops at the Main Street Alameda Ferry Terminal — no transfers, just like Oakland's ferry route.</p>
+            </div>
+            <div class="transit-item">
+              <span class="t-mode">Ferry → Moscone Center</span>
+              <p>Regular commute ferries run from either the Main Street or Seaplane Lagoon terminal direct to the SF Ferry Building, a 12–15 min walk from Moscone.</p>
+            </div>
+            <div class="transit-item">
+              <span class="t-mode">No BART on the island</span>
+              <p>Alameda has no BART station of its own. Nearest stations are Fruitvale, Lake Merritt, or 12th St in Oakland, reached by AC Transit bus or the free water shuttle to Jack London Square.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="city-block">
+          <div class="city-subhead"><span class="eyebrow">Neighborhoods</span></div>
+
+          <div class="neighborhood">
+            <h4>Park Street / Downtown</h4>
+            <p class="n-desc">Alameda's main commercial strip — over 100 restaurants, bars, and shops along a walkable historic stretch anchored by the 1932 Art Deco Alameda Theatre.</p>
+            <div class="n-cols">
+              <div class="n-col">
+                <span class="n-col-label">Stay</span>
+                <ul><li>Hotel supply directly on Park Street is thin — most visitors base out of West Alameda or nearby Oakland for more options</li></ul>
+              </div>
+              <div class="n-col">
+                <span class="n-col-label">Parks</span>
+                <ul><li>Robert W. Crown Memorial State Beach — a 2.5-mile stretch of bay-facing beach a short walk south</li><li>Crab Cove Visitor Center and Marine Reserve, at the beach's north end</li></ul>
+              </div>
+              <div class="n-col">
+                <span class="n-col-label">Coffee</span>
+                <ul><li>Highwire Coffee Roasters</li><li>Beanery of Alameda — small-batch roasting, inside Alameda Marketplace</li><li>Signal Coffee Roasters</li></ul>
+              </div>
+              <div class="n-col">
+                <span class="n-col-label">Restaurants</span>
+                <ul><li>Ole's Waffle Shop — Alameda landmark diner since 1927</li><li>Speisekammer — German, dog-friendly patio</li><li>Burma Superstar</li></ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="neighborhood">
+            <h4>West End / Alameda Point</h4>
+            <p class="n-desc">The former naval air station, now home to "Spirits Alley" — a stretch of artisan distilleries and wineries — and the newer Seaplane Lagoon ferry terminal.</p>
+            <div class="n-cols">
+              <div class="n-col">
+                <span class="n-col-label">Stay</span>
+                <ul><li><strong>Hawthorn Suites by Wyndham Oakland/Alameda</strong> <span class="price-tier">$$</span> — all-suites, on Webster St</li><li><strong>Homewood Suites by Hilton Oakland Airport Alameda</strong> <span class="price-tier">$$</span></li></ul>
+              </div>
+              <div class="n-col">
+                <span class="n-col-label">Parks</span>
+                <ul><li>Seaplane Lagoon Promenade — bay views right at the ferry terminal</li><li>Cross Alameda Trail connects to the wider Bay Trail for biking</li></ul>
+              </div>
+              <div class="n-col">
+                <span class="n-col-label">Coffee</span>
+                <ul><li>Julie's Coffee and Tea Garden</li></ul>
+              </div>
+              <div class="n-col">
+                <span class="n-col-label">Restaurants</span>
+                <ul><li>Building 43 Winery</li><li>Rock Wall Wine Company</li><li>Faction Brewing</li></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="city-block">
+          <div class="city-subhead"><span class="eyebrow">Cultural attractions</span></div>
+          <div class="attraction-grid">
+            <div class="attraction-card">
+              <div class="a-name">USS Hornet Sea, Air & Space Museum</div>
+              <p>Decommissioned WWII aircraft carrier that recovered the Apollo 11 astronauts, now a Smithsonian-affiliated museum on the water.</p>
+            </div>
+            <div class="attraction-card">
+              <div class="a-name">Alameda Theatre & Cineplex</div>
+              <p>Restored 1932 Art Deco movie palace anchoring the Park Street district.</p>
+            </div>
             <div class="attraction-card is-lgbtq">
-              <div class="a-name">Oakland Pride <span class="tag lgbtq">LGBTQ+</span></div>
-              <p>One of the region's largest Pride parades and festivals, centered downtown near Frank Ogawa Plaza each summer.</p>
+              <div class="a-name">LGBTQ+ community resources <span class="tag lgbtq">LGBTQ+</span></div>
+              <p>Alameda doesn't have a dedicated LGBTQ+ district; Oakland's Lakeshore Cultural District and Berkeley's Pacific Center are both a short ferry-plus-transit or bus ride away.</p>
             </div>
           </div>
         </div>
@@ -1225,10 +1328,6 @@
               <div class="a-name">Oyster Bay Regional Shoreline</div>
               <p>Bay Trail access and picnic grounds built over a former landfill, just outside downtown.</p>
             </div>
-            <div class="attraction-card is-lgbtq">
-              <div class="a-name">San Mateo County/Bay Area Pride circuit <span class="tag lgbtq">LGBTQ+</span></div>
-              <p>San Leandro doesn't have its own LGBTQ+ district, but it's a short BART hop from both Oakland's Pride events and Berkeley's Pacific Center — plan a day trip either direction.</p>
-            </div>
           </div>
         </div>
 
@@ -1302,7 +1401,7 @@
               <p>A small formal garden in the civic center area — a quiet break between meals.</p>
             </div>
             <div class="attraction-card is-lgbtq">
-              <div class="a-name">Hayward Pride & community events <span class="tag lgbtq">LGBTQ+</span></div>
+              <div class="a-name">LGBTQ+ community resources <span class="tag lgbtq">LGBTQ+</span></div>
               <p>Hayward doesn't have a dedicated LGBTQ+ district; nearest full-time community resources are the Pacific Center (Berkeley) and Oakland LGBTQ Community Center, both a straightforward BART ride north.</p>
             </div>
           </div>
@@ -1392,10 +1491,6 @@
               <div class="a-name">South San Francisco History Museum</div>
               <p>Small, free museum on the city's industrial and shipbuilding roots.</p>
             </div>
-            <div class="attraction-card is-lgbtq">
-              <div class="a-name">San Mateo County Pride Center <span class="tag lgbtq">LGBTQ+</span></div>
-              <p>The county's first and only LGBTQ+ community center is based in nearby San Mateo, serving the whole Peninsula including South SF — a short Caltrain hop away.</p>
-            </div>
           </div>
         </div>
 
@@ -1472,10 +1567,6 @@
               <div class="a-name">Millbrae Farmers' Market</div>
               <p>Year-round market steps from downtown and the transit hub.</p>
             </div>
-            <div class="attraction-card is-lgbtq">
-              <div class="a-name">San Mateo County Pride events <span class="tag lgbtq">LGBTQ+</span></div>
-              <p>Millbrae falls under the county's LGBTQ+ Commission and Pride Center network, with the annual county Pride Parade held nearby in San Mateo each June.</p>
-            </div>
           </div>
         </div>
 
@@ -1487,7 +1578,7 @@
       <div class="city-guide-head">
         <div>
           <h3>San Mateo</h3>
-          <div class="city-sub">~35–40 min to SF · Caltrain only · Peninsula's LGBTQ+ hub</div>
+          <div class="city-sub">~35–40 min to SF · Caltrain only · walkable downtown</div>
         </div>
         <span class="tag budget">Budget</span>
       </div>
@@ -1523,7 +1614,7 @@
               </div>
               <div class="n-col">
                 <span class="n-col-label">Parks</span>
-                <ul><li>San Mateo Central Park — the city's green heart, hosts the county Pride festival</li><li>Seal Point Park on the bay shoreline</li></ul>
+                <ul><li>San Mateo Central Park — the city's green heart</li><li>Seal Point Park on the bay shoreline</li></ul>
               </div>
               <div class="n-col">
                 <span class="n-col-label">Coffee</span>
@@ -1547,10 +1638,6 @@
             <div class="attraction-card">
               <div class="a-name">San Mateo Central Park</div>
               <p>Downtown's main green space, home to the Japanese Garden and Central Park Historic Railroad.</p>
-            </div>
-            <div class="attraction-card is-lgbtq">
-              <div class="a-name">San Mateo County Pride Center <span class="tag lgbtq">LGBTQ+</span></div>
-              <p>The Peninsula's first and only dedicated LGBTQ+ community center, on El Camino Real — combines mental-health services with community events. San Mateo Central Park also hosts the annual county Pride Parade & Festival each June.</p>
             </div>
           </div>
         </div>
@@ -1623,10 +1710,6 @@
             <div class="attraction-card">
               <div class="a-name">Burlingame Hillsborough History Museum</div>
               <p>Local history housed in the historic Burlingame train depot.</p>
-            </div>
-            <div class="attraction-card is-lgbtq">
-              <div class="a-name">San Mateo County Pride network <span class="tag lgbtq">LGBTQ+</span></div>
-              <p>Like the rest of the Peninsula cities in this guide, Burlingame is served by the San Mateo County Pride Center and its countywide calendar — the closest full-time resource, a short Caltrain ride south.</p>
             </div>
           </div>
         </div>
@@ -1711,7 +1794,7 @@
 
           <div class="neighborhood">
             <h4>Japantown</h4>
-            <p class="n-desc">One of only three historic Japantowns left in the U.S., a short walk north of downtown — food, shops, and cultural landmarks in a genuinely different register from the tech-district streets nearby.</p>
+            <p class="n-desc">One of only three historic Japantowns left in the U.S., a short walk north of downtown — food, shops, and cultural landmarks in a genuinely different register from the tech-district streets.nearby.</p>
             <div class="n-cols">
               <div class="n-col">
                 <span class="n-col-label">Stay</span>
@@ -1747,10 +1830,6 @@
             <div class="attraction-card is-lgbtq">
               <div class="a-name">Billy DeFrank LGBTQ+ Community Center <span class="tag lgbtq">LGBTQ+</span></div>
               <p>Operating since 1981, the Bay Area's South Bay hub for LGBTQ+ community — support groups, a queer library, and regular events on The Alameda.</p>
-            </div>
-            <div class="attraction-card is-lgbtq">
-              <div class="a-name">Silicon Valley Pride <span class="tag lgbtq">LGBTQ+</span></div>
-              <p>San José's Pride celebration dates to 1975, making it one of the longest-running in the country — typically held the last weekend of August.</p>
             </div>
           </div>
         </div>
@@ -1978,7 +2057,7 @@
             </div>
             <div class="attraction-card is-lgbtq">
               <div class="a-name">South Bay/Peninsula LGBTQ+ network <span class="tag lgbtq">LGBTQ+</span></div>
-              <p>No dedicated venue in Mountain View itself; it sits roughly equidistant between the Billy DeFrank Center (San José) and the San Mateo County Pride Center (San Mateo), both reachable by Caltrain.</p>
+              <p>No dedicated venue in Mountain View itself; the Billy DeFrank Center (San José) is the nearest full-time resource, reachable by Caltrain.</p>
             </div>
           </div>
         </div>
@@ -2054,7 +2133,7 @@
             </div>
             <div class="attraction-card is-lgbtq">
               <div class="a-name">South Bay/Peninsula LGBTQ+ network <span class="tag lgbtq">LGBTQ+</span></div>
-              <p>No dedicated LGBTQ+ venue in Palo Alto itself; Stanford's Queer Alliance-adjacent campus groups exist, and the San Mateo County Pride Center and Billy DeFrank Center are both a Caltrain ride away.</p>
+              <p>No dedicated LGBTQ+ venue in Palo Alto itself; Stanford's Queer Alliance-adjacent campus groups exist, and the Billy DeFrank Center is a Caltrain ride away.</p>
             </div>
           </div>
         </div>
@@ -2128,10 +2207,7 @@
               <div class="a-name">Fox Theatre</div>
               <p>Restored 1929 theater hosting touring musical acts on Courthouse Square.</p>
             </div>
-            <div class="attraction-card is-lgbtq">
-              <div class="a-name">San Mateo County Pride Center <span class="tag lgbtq">LGBTQ+</span></div>
-              <p>Same countywide resource covering the Peninsula cities in this guide — based in San Mateo, a short Caltrain ride south of Redwood City.</p>
-            </div>
+
           </div>
         </div>
 
@@ -2205,6 +2281,9 @@
     {name:'Santa Clara', lat:37.3536, lng:-121.9358, id:'santa-clara'},
     {name:'San José', lat:37.3297, lng:-121.9027, id:'san-jose'}
   ];
+  var ferryCities = [
+    {name:'Alameda', lat:37.7652, lng:-122.2416, id:'alameda'}
+  ];
   var bridges = [
     {name:'Bay Bridge (I-80) — SF to Oakland', lat:37.8175, lng:-122.3413},
     {name:'San Mateo Bridge (Hwy 92) — San Mateo to Hayward', lat:37.601, lng:-122.202},
@@ -2214,6 +2293,7 @@
   var starIcon = L.divIcon({className:'', html:'<div class="map-pin map-pin-venue">&#9733;</div>', iconSize:[26,26], iconAnchor:[13,13]});
   var bartIcon = L.divIcon({className:'', html:'<div class="map-pin map-pin-bart"></div>', iconSize:[14,14], iconAnchor:[7,7]});
   var caltrainIcon = L.divIcon({className:'', html:'<div class="map-pin map-pin-caltrain"></div>', iconSize:[14,14], iconAnchor:[7,7]});
+  var ferryIcon = L.divIcon({className:'', html:'<div class="map-pin map-pin-ferry"></div>', iconSize:[14,14], iconAnchor:[7,7]});
   var bridgeIcon = L.divIcon({className:'', html:'<div class="map-pin map-pin-bridge">&#8942;</div>', iconSize:[14,14], iconAnchor:[7,7]});
 
   var allPoints = [];
@@ -2232,6 +2312,12 @@
 
   caltrainCities.forEach(function(c){
     var m = L.marker([c.lat, c.lng], {icon:caltrainIcon}).addTo(map);
+    m.bindPopup('<strong>'+c.name+'</strong><br><a href="#'+c.id+'">View '+c.name+' guide &darr;</a>');
+    allPoints.push([c.lat, c.lng]);
+  });
+
+  ferryCities.forEach(function(c){
+    var m = L.marker([c.lat, c.lng], {icon:ferryIcon}).addTo(map);
     m.bindPopup('<strong>'+c.name+'</strong><br><a href="#'+c.id+'">View '+c.name+' guide &darr;</a>');
     allPoints.push([c.lat, c.lng]);
   });
@@ -2255,6 +2341,10 @@
 
   L.polyline([
     [37.803608,-122.272006],[37.768009,-122.387787]
+  ], {color:'#1F6F78', weight:3, opacity:0.85, dashArray:'2,8'}).addTo(map);
+
+  L.polyline([
+    [37.7652,-122.2416],[37.768009,-122.387787]
   ], {color:'#1F6F78', weight:3, opacity:0.85, dashArray:'2,8'}).addTo(map);
 
   map.fitBounds(allPoints, {padding:[30,30]});
