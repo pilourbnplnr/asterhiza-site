@@ -427,6 +427,33 @@
     color:var(--violet-deep);
     border:1px solid var(--violet-deep);
   }
+  .top-bar{
+    background:var(--fog);
+    border-bottom:1px solid var(--fog-line);
+    padding:12px 0;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    flex-wrap:wrap;
+    font-size:0.86rem;
+    color:#5C5578;
+  }
+  .top-bar-text strong{color:var(--ink);}
+  .top-bar-links{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    white-space:nowrap;
+  }
+  .top-bar-links a{color:var(--teal-deep); text-decoration:none; font-weight:600;}
+  .top-bar-links a:hover{text-decoration:underline;}
+  .top-bar-divider{color:var(--fog-line);}
+  @media (max-width:600px){
+    .top-bar{padding:10px 0;}
+  }
   .tips-list li{
     padding-left:26px;
     position:relative;
@@ -708,17 +735,15 @@
 </header>
 
 <!-- NEWSLETTER SIGNUP (TOP) -->
-<section id="follow-top" style="padding-top:0;">
+<section id="follow-top" style="padding-top:0; padding-bottom:0;">
   <div class="wrap">
-    <div class="signup-panel signup-panel--compact">
-      <div>
-        <div class="eyebrow">Before you dive in</div>
-        <h2>Built by a Valkyries fan who tracks this stuff year-round</h2>
-        <p>This guide comes from <strong>The Whistle Margin</strong>, where I cover officiating patterns and team analytics all season. Sign up now and I'll see you long after All-Star weekend.</p>
-      </div>
-      <div class="signup-embed">
-        <iframe src="https://whistlemargin.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
-      </div>
+    <div class="top-bar">
+      <span class="top-bar-text">Guide by <strong>The Whistle Margin</strong> — Valkyries analytics, year-round.</span>
+      <span class="top-bar-links">
+        <a href="#follow">Follow along &rarr;</a>
+        <span class="top-bar-divider">&middot;</span>
+        <a href="#suggest">Suggest a spot &rarr;</a>
+      </span>
     </div>
   </div>
 </section>
