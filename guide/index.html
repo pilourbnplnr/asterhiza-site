@@ -183,13 +183,13 @@
     white-space:nowrap;
   }
   .cost-note + .cost-note{margin-top:16px;}
-  .follow-note{display:flex;}
-  .follow-note a{
+  .follow-note, .recs-note{display:flex;}
+  .follow-note a, .recs-note a{
     color:var(--marigold);
     font-weight:600;
     text-decoration:none;
   }
-  .follow-note a:hover{text-decoration:underline;}
+  .follow-note a:hover, .recs-note a:hover{text-decoration:underline;}
 
   /* ---------- SECTION SHELL ---------- */
   section{padding:56px 0;}
@@ -728,8 +728,12 @@
       <span>SF proper is expensive. You don't have to sleep there. The East Bay, the Peninsula, and the South Bay are all a short BART, Caltrain, or ferry ride from Chase Center — this guide is built around that fact.</span>
     </div>
     <div class="cost-note follow-note">
-      <span class="mono-lead">GUIDE BY THE WHISTLE MARGIN —</span>
-      <span>Valkyries analytics, year-round. <a href="#follow">Follow along &rarr;</a> &middot; <a href="#suggest">Suggest a spot &rarr;</a></span>
+      <span class="mono-lead">THE WHISTLE MARGIN —</span>
+      <span>I'm The Whistle Margin — data-driven Valkyries coverage: officiating patterns, team identity, and now apparently tourism. If you're here for All-Star weekend, stick around for the season. <a href="#follow">Follow along &rarr;</a></span>
+    </div>
+    <div class="cost-note recs-note">
+      <span class="mono-lead">COMMUNITY RECOMMENDATIONS —</span>
+      <span>This guide's curated by me, but the Bay's bigger than one person's list. Know a spot I'm missing? <a href="#suggest">Suggest a spot &rarr;</a></span>
     </div>
   </div>
 </header>
