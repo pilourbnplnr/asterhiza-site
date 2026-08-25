@@ -375,6 +375,58 @@
     list-style:none;
     margin:0; padding:0;
   }
+  .signup-panel{
+    background:var(--teal-deep);
+    color:#fff;
+    padding:36px;
+    border-radius:var(--radius);
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:32px;
+    align-items:center;
+  }
+  .signup-panel .eyebrow{color:var(--marigold); margin-bottom:8px;}
+  .signup-panel h2{color:#fff; font-size:1.7rem; margin-bottom:12px;}
+  .signup-panel p{color:rgba(255,255,255,0.88); max-width:52ch;}
+  .signup-embed{display:flex; justify-content:center;}
+  .signup-embed iframe{width:100%; max-width:480px; height:320px; border-radius:8px;}
+  @media (max-width: 720px){
+    .signup-panel{grid-template-columns:1fr;}
+  }
+  .signup-panel--compact{padding:28px;}
+  .signup-panel--compact h2{font-size:1.4rem;}
+  .suggest-panel{
+    background:#EFE9F7;
+    border:1px solid #D9CCEF;
+    border-radius:var(--radius);
+    padding:32px 36px;
+  }
+  .suggest-panel h2{color:var(--violet-deep); font-size:1.6rem; margin-bottom:10px;}
+  .suggest-panel p{max-width:64ch;}
+  .suggest-panel .disclaimer{
+    margin-top:18px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.86rem;
+    color:var(--violet-deep);
+    border-left:3px solid var(--violet);
+    padding-left:12px;
+  }
+  .suggest-panel .btn-row{margin-top:20px; display:flex; gap:14px; flex-wrap:wrap;}
+  .suggest-panel .btn{
+    display:inline-block;
+    background:var(--violet-deep);
+    color:#fff;
+    padding:11px 20px;
+    border-radius:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.9rem;
+    text-decoration:none;
+  }
+  .suggest-panel .btn.secondary{
+    background:transparent;
+    color:var(--violet-deep);
+    border:1px solid var(--violet-deep);
+  }
   .tips-list li{
     padding-left:26px;
     position:relative;
@@ -654,6 +706,22 @@
     </div>
   </div>
 </header>
+
+<!-- NEWSLETTER SIGNUP (TOP) -->
+<section id="follow-top" style="padding-top:0;">
+  <div class="wrap">
+    <div class="signup-panel signup-panel--compact">
+      <div>
+        <div class="eyebrow">Before you dive in</div>
+        <h2>Built by a Valkyries fan who tracks this stuff year-round</h2>
+        <p>This guide comes from <strong>The Whistle Margin</strong>, where I cover officiating patterns and team analytics all season. Sign up now and I'll see you long after All-Star weekend.</p>
+      </div>
+      <div class="signup-embed">
+        <iframe src="https://whistlemargin.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
 
 <main id="main-content">
 
@@ -2206,6 +2274,37 @@
         <li><strong>Book ferry tickets in advance.</strong> Clipper isn't accepted on the special Chase Center service — it's a separate ticket through the app.</li>
         <li><strong>Don't assume you need a car.</strong> Every route in this guide gets you to Chase Center without driving or parking fees.</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY RECS -->
+<section id="suggest">
+  <div class="wrap">
+    <div class="suggest-panel">
+      <h2>Know a spot I'm missing?</h2>
+      <p>This guide is personally curated — every listing here is something I've researched or vetted myself. But the Bay Area's bigger than one person's list. If you've got a recommendation, drop it below.</p>
+      <div class="disclaimer">NOTE — Community-submitted recommendations are not vetted or curated by The Whistle Margin. They won't appear in the guide itself; they're collected separately for other visitors to browse.</div>
+      <div class="btn-row">
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSevWh3JD5n0jFhYg2AhJWvpCz-A3NJYKd_tFchXzfmA1KZkqw/viewform?usp=sharing" target="_blank" rel="noopener">Submit a recommendation</a>
+        <a class="btn secondary" href="https://docs.google.com/spreadsheets/d/1dgQRYniz5P2thqZbjfYF3PaDmU56UK72BH7seR-CXhI/edit?usp=sharing" target="_blank" rel="noopener">Browse community recs</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER SIGNUP -->
+<section id="follow">
+  <div class="wrap">
+    <div class="signup-panel">
+      <div>
+        <div class="eyebrow">Stay in the loop</div>
+        <h2>This guide's a side project. The main event is year-round.</h2>
+        <p>I'm <strong>The Whistle Margin</strong> — data-driven Valkyries coverage: officiating patterns, team identity, and now apparently tourism. If you're here for All-Star weekend, stick around for the season.</p>
+      </div>
+      <div class="signup-embed">
+        <iframe src="https://whistlemargin.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+      </div>
     </div>
   </div>
 </section>
