@@ -171,6 +171,7 @@
     background:rgba(255,255,255,0.06);
     border:1px solid rgba(255,255,255,0.14);
     border-left:4px solid var(--marigold);
+    border-radius:8px;
     padding:14px 18px;
     max-width:640px;
     font-size:0.94rem;
@@ -181,6 +182,14 @@
     color:var(--marigold);
     white-space:nowrap;
   }
+  .cost-note + .cost-note{margin-top:16px;}
+  .follow-note{display:flex;}
+  .follow-note a{
+    color:var(--marigold);
+    font-weight:600;
+    text-decoration:none;
+  }
+  .follow-note a:hover{text-decoration:underline;}
 
   /* ---------- SECTION SHELL ---------- */
   section{padding:56px 0;}
@@ -428,33 +437,6 @@
     background:transparent;
     color:var(--violet-deep);
     border:1px solid var(--violet-deep);
-  }
-  .top-bar{
-    background:var(--fog);
-    border-bottom:1px solid var(--fog-line);
-    padding:12px 0;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:16px;
-    flex-wrap:wrap;
-    font-size:0.86rem;
-    color:#5C5578;
-  }
-  .top-bar-text strong{color:var(--ink);}
-  .top-bar-links{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.78rem;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    white-space:nowrap;
-  }
-  .top-bar-links a{color:var(--teal-deep); text-decoration:none; font-weight:600;}
-  .top-bar-links a:hover{text-decoration:underline;}
-  .top-bar-divider{color:var(--fog-line);}
-  @media (max-width:600px){
-    .top-bar{padding:10px 0;}
   }
   .tips-list li{
     padding-left:26px;
@@ -742,22 +724,12 @@
       <span class="mono-lead">REALITY CHECK —</span>
       <span>SF proper is expensive. You don't have to sleep there. The East Bay, the Peninsula, and the South Bay are all a short BART, Caltrain, or ferry ride from Chase Center — this guide is built around that fact.</span>
     </div>
-  </div>
-</header>
-
-<!-- NEWSLETTER SIGNUP (TOP) -->
-<section id="follow-top" style="padding-top:0; padding-bottom:0;">
-  <div class="wrap">
-    <div class="top-bar">
-      <span class="top-bar-text">Guide by <strong>The Whistle Margin</strong> — Valkyries analytics, year-round.</span>
-      <span class="top-bar-links">
-        <a href="#follow">Follow along &rarr;</a>
-        <span class="top-bar-divider">&middot;</span>
-        <a href="#suggest">Suggest a spot &rarr;</a>
-      </span>
+    <div class="cost-note follow-note">
+      <span class="mono-lead">GUIDE BY THE WHISTLE MARGIN —</span>
+      <span>Valkyries analytics, year-round. <a href="#follow">Follow along &rarr;</a> &middot; <a href="#suggest">Suggest a spot &rarr;</a></span>
     </div>
   </div>
-</section>
+</header>
 
 <main id="main-content">
 
